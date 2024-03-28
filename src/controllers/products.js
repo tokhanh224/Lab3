@@ -29,7 +29,7 @@ export const deleteProduct = async (req, res) => {
   try {
       const productId = req.params.id;
       const product = await Products.findOneAndDelete({ _id: productId });
-      res.redirect('/list-products');
+      res.redirect('/admin');
   } catch (error) {
       console.error("Error deleting product:", error);
       res.status(500).send("Internal Server Error");
@@ -41,13 +41,14 @@ export const updateProductPost =  async (req, res) => {
       const productId = req.params.id;
       let updatedProduct = {
           name: req.body.pro_name,
-          price: Number(req.body.pro_price)
+          price: Number(req.body.pro_price),
+          category: req.body.pro_category
       };
       if (req.file) {
           updatedProduct.image = req.file.filename;
       }
       await Products.findByIdAndUpdate(productId, updatedProduct);
-      res.redirect('/list-products');
+      res.redirect('/admin');
   } catch (error) {
       console.error("Error editing product:", error);
       res.status(500).send("Internal Server Error");
@@ -76,8 +77,7 @@ export const addProduct = async (req, res) => {
   let file = req.file;
   let img = file.filename;
   const new_pro = {
-      // id: products.length + 1,
-      category: req.body.pro_category,
+      category: req.body.category,
       name: req.body.pro_name,
       price: Number(req.body.pro_price),
       image: img

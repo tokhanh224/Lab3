@@ -46,6 +46,10 @@
                     <label for="pro_price" class="form-label">Product Price:</label>
                     <input type="number" class="form-control mb-2 " id="pro_price" name="pro_price"  value="<%= product.price %>"required>
                   </div>
+                  <div class="mb-3">
+                    <label for="pro_category" class="form-label">Product Category:</label>
+                    <input type="text" class="form-control mb-2 " id="pro_category" name="pro_category"  value="<%= product.category %>">
+                  </div> 
                   <div class="mb-4 d-flex justify-content-center">
                     <img id="previewImage" src="/images/<%= product.image %>" alt="Product Image" style="width: 400px; object-fit: cover;">
                 </div>
