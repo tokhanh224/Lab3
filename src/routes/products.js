@@ -1,13 +1,12 @@
 import express from "express";
 import { uploadFile } from '../models/products.js';
-import { addProduct, deleteProduct, getAllProduct, getProductDetail, listProduct, updateProductGet , updateProductPost } from '../controllers/products.js';
+import { addProduct,  deleteProduct, getAllProduct, getProductDetail, listProduct,  updateProductGet , updateProductPost } from '../controllers/products.js';
 import { getCatalog } from "../controllers/catalog.js";
 // import {Home} from '../controllers/index.js';
 const router = express.Router();
 
 // Trang danh sách sản phẩm
 router.get('/list-products', getAllProduct);
-
 
 // Trang thêm sản phẩm - POST
 router.get('/add-product', (req, res) => {
@@ -23,4 +22,7 @@ router.post('/update-product/:id', uploadFile.single('pro_file'), updateProductP
 
 router.get('/update-product/:id', updateProductGet);
 router.get('/list-products', listProduct,getCatalog);
+
+
+
 export default router;
