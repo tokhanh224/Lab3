@@ -1,4 +1,4 @@
-import Users from "../models/user.js";
+import Users from "../models/User.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { signInValidation, signUpValidation } from "../validations/auth.js";

@@ -1,6 +1,18 @@
 import mongoose from "mongoose";
 import multer from "multer";
-const Pro_Schema = new mongoose.Schema({ name: String, price: Number, image: String, category: String }, { versionKey: false });
+const Pro_Schema = new mongoose.Schema({ 
+      name: String
+    , price: Number
+    , image: String
+    , category: String,
+    categoryID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Catalog",
+        required: true
+    }
+},
+    
+    { versionKey: false });
 const Products = mongoose.model('Products', Pro_Schema);
 
 // Khai báo hàm upload ảnh

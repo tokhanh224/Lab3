@@ -2,10 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import router from "./routes/products.js";
 import router_id from "./routes/index.js";
-import router_cata from "./routes/catalog.js";
 import dotenv from "dotenv"
 import router_POSTMAN from "./routes/postman.js";
 import router_auth from "./routes/auth.js";
+import router_cata from "./routes/catalog.js";
 dotenv.config()
 const app = express();
 const port = process.env.PORT;
@@ -31,7 +31,8 @@ app.use('/', router_POSTMAN);
 // app.use('/api', router_POSTMAN);
 app.use('/api/auth', router_auth);
 
+app.use('/api/category', router_cata)
 
 app.listen(port, () => {
-    console.log(`http://localhost:${port}`)
+    console.log(` run at http://localhost:${port}`)
 })
